@@ -1,0 +1,10 @@
+version: "3.7"
+services:
+  nfs:
+    build: .
+    volumes:
+      - d:/:/mnt/nfs
+      - .:/root
+    ports:
+      - "2049:2049"
+    command: /bin/bash -c "cp /root/exports /etc/exports && sleep infinity"

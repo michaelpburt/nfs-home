@@ -1,13 +1,11 @@
 FROM ubuntu:18.04
 
-RUN \
-  apt-get update && \
-  apt-get -y upgrade && \
-  apt-get install -y nfs-kernel-server
-  apt-get install -y nano curl git htop mant && \
-  mkdir -p /mnt/nfs && \
-  chown nobody:nogroup /mnt/nfs && \
-  chmod 777 /mnt/nfs
+RUN apt-get update && apt-get -y upgrade
+RUN apt-get install -y --reinstall nfs-kernel-server systemd
+RUN apt-get install -y nano curl git htop man
+RUN mkdir -p /mnt/nfs
+RUN chown nobody:nogroup /mnt/nfs
+RUN chmod 777 /mnt/nfs
 
 # Set environment variables.
 ENV HOME /root
